@@ -7,6 +7,7 @@ Auto Use Food.</br>
 
 # Features
 - Auto Use Food in added zones and only when entering combat.
+- Auto Use Food when buff <= 30 sec and incombat
 
 # Commands
 ```
