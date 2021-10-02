@@ -1,13 +1,13 @@
-# Auto-Wine
-Auto Use Wine.</br>
+# Auto-Food
+Auto Use Food.</br>
 
 # Features
-- Auto Use Wine in added zones and only when entering combat.
+- Auto Use Food in added zones and only when entering combat.
 
 # Commands
 ```
-- wine              #enable/disable
-- wine add          #add current zone to script
-- wine remove       #remove current zone from script
+- food              #enable/disable
+- food add          #add current zone to script
+- food remove       #remove current zone from script
 ```
 
