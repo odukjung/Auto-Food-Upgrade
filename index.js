@@ -6,15 +6,18 @@ module.exports = function AutoFood(mod) {
     let enabled = false;
 
 	const food_s_cri = 206034; // 206014 food craft ID
-    const food_s_pow = 206035; // 206015 food craft ID
+    	const food_s_pow = 206035; // 206015 food craft ID
 	const food_b_cri = 206037; // 206017 food craft ID
 	const food_b_pow = 206038; // 206018 food craft ID
 
-    const food_s_cri_abn = 70232;
-    const food_s_pow_abn = 70233;
+   	const food_s_cri_abn = 70232;
+    	const food_s_pow_abn = 70233;
 	const food_b_cri_abn = 70243;
 	const food_b_pow_abn = 70244;
 	
+	let food_select = food_s_cri;
+	let food_select_abn = food_s_cri_abn;
+
     let zones = [];
 
     let aZone = 0;
@@ -25,8 +28,6 @@ module.exports = function AutoFood(mod) {
     let myAngle;
     let myPosition;
 
-	let food_select = food_s_cri;
-	let food_select_abn = food_s_cri_abn;
     let config_file = require('./config.json');
     updateConfig();
     
