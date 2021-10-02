@@ -15,8 +15,8 @@ module.exports = function AutoFood(mod) {
 	const food_b_cri_abn = 70243;
 	const food_b_pow_abn = 70244;
 	
-	let food_select = food_s_cri;
-	let food_select_abn = food_s_cri_abn;
+	let food_select = food_s_cri;  // <<-- Default setting
+	let food_select_abn = food_s_cri_abn;  // <<-- Default setting
 
     let zones = [];
 
