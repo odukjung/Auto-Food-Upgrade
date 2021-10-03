@@ -3,91 +3,91 @@ const fs = require('fs');
 const path = require("path");
 
 module.exports = function AutoFood(mod) {
-    let enabled = false;
+let enabled = false;
 
-	const food_s_cri = 206034; // 206014 food craft ID
-    const food_s_pow = 206035; // 206015 food craft ID
-	const food_b_cri = 206037; // 206017 food craft ID
-	const food_b_pow = 206038; // 206018 food craft ID
+const food_s_cri = 206034; // 206014 food craft ID
+const food_s_pow = 206035; // 206015 food craft ID
+const food_b_cri = 206037; // 206017 food craft ID
+const food_b_pow = 206038; // 206018 food craft ID
 
-    const food_s_cri_abn = 70232;
-    const food_s_pow_abn = 70233;
-	const food_b_cri_abn = 70243;
-	const food_b_pow_abn = 70244;
+const food_s_cri_abn = 70232;
+const food_s_pow_abn = 70233;
+const food_b_cri_abn = 70243;
+const food_b_pow_abn = 70244;
 	
-	const food_s_cri_name = 'Fish Steak';
-    const food_s_pow_name = 'Fish Fritters';
-	const food_b_cri_name = 'Spicy Fish Buffet';
-	const food_b_pow_name = 'Hot Fish Buffet';
+const food_s_cri_name = 'Fish Steak';
+const food_s_pow_name = 'Fish Fritters';
+const food_b_cri_name = 'Spicy Fish Buffet';
+const food_b_pow_name = 'Hot Fish Buffet';
 	
-	let food_select = food_b_pow;
-	let food_select_abn = food_b_pow_abn;
-	let food_select_name = food_b_pow_name;
+let food_select = food_b_pow;
+let food_select_abn = food_b_pow_abn;
+let food_select_name = food_b_pow_name;
 	
-    let zones = [];
+let zones = [];
 
-    let aZone = 0;
-    let alive = true;
-    let gameId;
-    let eat;
+let aZone = 0;
+let alive = true;
+let gameId;
+let eat;
 
-    let myAngle;
-    let myPosition;
+let myAngle;
+let myPosition;
 	
-    let config_file = require('./config.json');
-    updateConfig();
+let config_file = require('./config.json');
+updateConfig();
     
-    mod.command.add(["food"], (arg_1) => {
-		if (!arg_1) {
-            enabled = !enabled;
-            mod.command.message(`${enabled ? "enabled" : "disabled"}`);
-        }
-		else if (arg_1 === 'scri') {
-			food_select = food_s_cri;
-			food_select_abn = food_s_cri_abn;
-			mod.command.message('Name food : ' + '<font color="#fff317">[' + food_s_cri_name + ']</font>')
-		}
-		else if (arg_1 === 'spow') {
-			food_select = food_s_pow;
-			food_select_abn = food_s_pow_abn;
-			mod.command.message('Name food : ' + '<font color="#fff317">[' + food_s_pow_name + ']</font>')
-		}
-		else if (arg_1 === 'bcri') {
-			food_select = food_b_cri;
-			food_select_abn = food_b_cri_abn;
-			mod.command.message('Name food : ' + '<font color="#fff317">[' + food_b_cri_name + ']</font>')
-		}
-		else if (arg_1 === 'bpow') {
-			food_select = food_b_pow;
-			food_select_abn = food_b_pow_abn;
-			mod.command.message('Name food : ' + '<font color="#fff317">[' + food_b_pow_name + ']</font>')
-		}
-		else if (arg_1 === 'info') {
-        mod.command.message('enabled : ' + '<font color="#00ff00">' + enabled + '</font>')
-		mod.command.message('Name food : ' + '<font color="#fff317">[' + food_select_name + ']</font>')
-		mod.command.message('ID food : ' + food_select)
-		mod.command.message('Buff ID : ' + food_select_abn)
-		}
-		else if (arg_1 === 'add') {
-       if(!config_file["zones"].includes(aZone)) zones.push(aZone);
-            config_file["zones"] = zones;
-            fs.writeFileSync(path.join(__dirname, "config.json"), JSON.stringify(config_file, null, 2));
-		mod.command.message('Add Zone : ' + '<font color="#fff317">[' + aZone + ']</font>')
-		}
-		else if (arg_1 === 'remove') {
-        let i = zones.indexOf(aZone);
-            if (i > -1) {
-                zones.splice(i, 1);
-            }
-            config_file["zones"] = zones;
-            fs.writeFileSync(path.join(__dirname, "config.json"), JSON.stringify(config_file, null, 2));
-		mod.command.message('Remove Zone : ' + '<font color="#fff317">[' + aZone + ']</font>')
-		}
-		else
-		{
-			mod.command.message("Wrong Command!")
-		}
-	})
+mod.command.add(["food"], (arg_1) => {
+if (!arg_1) {
+	enabled = !enabled;
+	mod.command.message(`${enabled ? "enabled" : "disabled"}`);
+	}
+else if (arg_1 === 'scri') {
+	food_select = food_s_cri;
+	food_select_abn = food_s_cri_abn;
+	mod.command.message('Name food : ' + '<font color="#fff317">[' + food_s_cri_name + ']</font>')
+	}
+else if (arg_1 === 'spow') {
+	food_select = food_s_pow;
+	food_select_abn = food_s_pow_abn;
+	mod.command.message('Name food : ' + '<font color="#fff317">[' + food_s_pow_name + ']</font>')
+	}
+else if (arg_1 === 'bcri') {
+	food_select = food_b_cri;
+	food_select_abn = food_b_cri_abn;
+	mod.command.message('Name food : ' + '<font color="#fff317">[' + food_b_cri_name + ']</font>')
+	}
+else if (arg_1 === 'bpow') {
+	food_select = food_b_pow;
+	food_select_abn = food_b_pow_abn;
+	mod.command.message('Name food : ' + '<font color="#fff317">[' + food_b_pow_name + ']</font>')
+	}
+else if (arg_1 === 'info') {
+	mod.command.message('enabled : ' + '<font color="#00ff00">' + enabled + '</font>')
+	mod.command.message('Name food : ' + '<font color="#fff317">[' + food_select_name + ']</font>')
+	mod.command.message('ID food : ' + food_select)
+	mod.command.message('Buff ID : ' + food_select_abn)
+	}
+else if (arg_1 === 'add') {
+	if(!config_file["zones"].includes(aZone)) zones.push(aZone);
+	config_file["zones"] = zones;
+	fs.writeFileSync(path.join(__dirname, "config.json"), JSON.stringify(config_file, null, 2));
+	mod.command.message('Add Zone : ' + '<font color="#fff317">[' + aZone + ']</font>')
+	}
+else if (arg_1 === 'remove') {
+	let i = zones.indexOf(aZone);
+	if (i > -1) {
+	zones.splice(i, 1);
+	}
+	config_file["zones"] = zones;
+	fs.writeFileSync(path.join(__dirname, "config.json"), JSON.stringify(config_file, null, 2));
+	mod.command.message('Remove Zone : ' + '<font color="#fff317">[' + aZone + ']</font>')
+	}
+else
+	{
+	mod.command.message("Wrong Command!")
+	}
+})
 
     mod.hook('S_LOAD_TOPO', 3, (event) => {
 		aZone = event.zone;
