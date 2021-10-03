@@ -1,6 +1,8 @@
 # Auto-Food
 Auto Use Food.</br>
 
+** MOD isn't Auto-Update plz manual update 
+
 # Default Config
 - Enabled = True
 - Default Food = Fish Steak (from Elleon's Mark of Valor)
