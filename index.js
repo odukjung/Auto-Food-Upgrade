@@ -20,9 +20,9 @@ const food_s_pow_name = 'Fish Fritters';
 const food_b_cri_name = 'Spicy Fish Buffet';
 const food_b_pow_name = 'Hot Fish Buffet';
 	
-let food_select = food_b_pow;
-let food_select_abn = food_b_pow_abn;
-let food_select_name = food_b_pow_name;
+let food_select = food_s_cri;
+let food_select_abn = food_s_cri_abn;
+let food_select_name = food_s_cri_name;
 	
 let zones = [];
 
