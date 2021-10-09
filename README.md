@@ -5,7 +5,7 @@ Auto Use Food.</br>
 
 # Update
 - New Function fast switchs food pow || food cri
-
+- Check Buff Multi-Nostrum or High grade than setup food stop spam it 
 # Default Config
 - Enabled = True
 - Default Food = Fish Steak (from Elleon's Mark of Valor)
