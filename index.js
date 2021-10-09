@@ -4,25 +4,32 @@ const path = require("path");
 
 module.exports = function AutoFood(mod) {
     let enabled = false;
-
+	
+	// blue tier
 	const food_s_cri = 206034; // 206014 food craft ID
-    const food_s_pow = 206035; // 206015 food craft ID
+    	const food_s_pow = 206035; // 206015 food craft ID
+	// gold tier
 	const food_b_cri = 206037; // 206017 food craft ID
 	const food_b_pow = 206038; // 206018 food craft ID
-
-    const food_s_cri_abn = 70232;
-    const food_s_pow_abn = 70233;
+	
+	// blue tier
+   	const food_s_cri_abn = 70232;
+   	const food_s_pow_abn = 70233;
+	// gold tier
 	const food_b_cri_abn = 70243;
 	const food_b_pow_abn = 70244;
 	
+	// blue tier
 	const food_s_cri_name = 'Fish Steak';
-    const food_s_pow_name = 'Fish Fritters';
+    	const food_s_pow_name = 'Fish Fritters';
+	// gold tier
 	const food_b_cri_name = 'Spicy Fish Buffet';
 	const food_b_pow_name = 'Hot Fish Buffet';
 	
-	let food_select = food_s_pow;
-	let food_select_abn = food_s_pow_abn;
-	let food_select_name = food_s_pow_name;
+	// Default Food
+	let food_select = food_b_pow;
+	let food_select_abn = food_b_pow_abn;
+	let food_select_name = food_b_pow_name;
 	
     let zones = [];
 
@@ -146,6 +153,18 @@ module.exports = function AutoFood(mod) {
 
     mod.hook('S_PLAYER_STAT_UPDATE', 17, (event) => {
         if(!enabled) return;
+		
+		// check Multi-Nostrum
+		if (abnormalityDuration(4042) >= 1)
+		{
+			return;
+		}
+		
+		// check buff
+		if((abnormalityDuration(70242) >= 1 || abnormalityDuration(70243) >= 1 || abnormalityDuration(70244) >= 1) && food_select === food_s_pow || food_select === food_s_cri)
+		{
+			return;
+		}
 		
 		if(abnormalityDuration(food_select_abn) <= 30000)
 		{
